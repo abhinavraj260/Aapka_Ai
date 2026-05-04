@@ -12,9 +12,18 @@ const micHint = document.getElementById('micHint');
 const txBox   = document.getElementById('txBox');
 const actBox  = document.getElementById('actBox');
 const clrBtn  = document.getElementById('clrBtn');
+const loginBtn = document.getElementById('loginBtn');
 
 let recog = null;
 let listening = false;
+
+// ── Login button handler ──────────────────────────────────────
+loginBtn.addEventListener('click', () => {
+  const loginUrl = chrome.runtime.getURL('login/login.html');
+  chrome.tabs.create({
+    url: loginUrl
+  });
+});
 
 // ── Quick nav buttons ─────────────────────────────────────────
 document.querySelectorAll('.qb').forEach(b => {

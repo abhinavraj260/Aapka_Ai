@@ -150,13 +150,16 @@ body{
 .ftr{
   display:flex;align-items:center;justify-content:space-between;
   padding:8px 12px;border-top:1px solid var(--b);
+  gap:8px;
 }
 .ftr-tag{font-family:var(--fm);font-size:8px;color:var(--t3);letter-spacing:1px;}
-.ftr-clr{
+.ftr-clr, .ftr-login{
   background:none;border:none;color:var(--t3);
   font-family:var(--fm);font-size:9px;cursor:pointer;letter-spacing:1px;
+  transition:color .3s;
 }
-.ftr-clr:hover{color:var(--a3);}
+.ftr-clr:hover, .ftr-login:hover{color:var(--a1);}
+.ftr-login{color:var(--t2);}
 
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px;}
