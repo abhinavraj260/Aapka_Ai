@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI ASSISTANT – Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090d;
+      --bg2: #0d1117;
+      --bg3: #131a22;
+      --bg4: #1a2333;
+      --b: rgba(255,255,255,0.06);
+      --a1: #00FFB2;
+      --a2: #0099FF;
+      --a3: #FF4D6D;
+      --t: #dde4ed;
+      --t2: #6b7d8f;
+      --t3: #2e3d4f;
+      --r: 10px;
+      --fh: 'Syne', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg4) 100%);
+      color: var(--t);
+      font-family: var(--fh);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      padding: 40px;
+      background: var(--bg2);
+      border: 1px solid var(--b);
+      border-radius: var(--r);
+      box-shadow: 0 8px 32px rgba(0, 255, 178, 0.08);
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 178, 0.4));
+    }
+
+    .logo-text {
+      text-align: center;
+    }
+
+    .logo-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      background: linear-gradient(90deg, var(--a1), var(--a2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-tag {
+      font-family: var(--fm);
+      font-size: 10px;
+      color: var(--t3);
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--t3);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg3);
+      border: 1px solid var(--b);
+      border-radius: 8px;
+      color: var(--t);
+      font-family: var(--fm);
+      font-size: 13px;
+      transition: all 0.3s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: rgba(0, 255, 178, 0.5);
+      box-shadow: 0 0 12px rgba(0, 255, 178, 0.15);
+      background: var(--bg4);
+    }
+
+    .form-input::placeholder {
+      color: var(--t3);
+    }
+
+    .password-toggle {
+      position: relative;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--t2);
+      cursor: pointer;
+      font-size: 14px;
+      transition: color 0.3s;
+      padding: 4px;
+    }
+
+    .toggle-btn:hover {
+      color: var(--a1);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--a1);
+      cursor: pointer;
+    }
+
+    .checkbox-label {
+      font-family: var(--fm);
+      font-size: 11px;
+      color: var(--t2);
+      cursor: pointer;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(0, 255, 178, 0.15), rgba(0, 153, 255, 0.1));
+      border: 2px solid rgba(0, 255, 178, 0.3);
+      border-radius: 8px;
+      color: var(--a1);
+      font-family: var(--fh);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 0 18px rgba(0, 255, 178, 0.08);
+    }
+
+    .login-btn:hover {
+      border-color: var(--a1);
+      background: linear-gradient(135deg, rgba(0, 255, 178, 0.25), rgba(0, 153, 255, 0.15));
+      box-shadow: 0 0 28px rgba(0, 255, 178, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .login-btn.loading {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--b);
+    }
+
+    .divider-text {
+      font-family: var(--fm);
+      font-size: 9px;
+      color: var(--t3);
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .social-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .social-btn {
+      padding: 10px;
+      background: var(--bg3);
+      border: 1px solid var(--b);
+      border-radius: 8px;
+      color: var(--t2);
+      font-family: var(--fm);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .social-btn:hover {
+      border-color: rgba(0, 255, 178, 0.3);
+      color: var(--a1);
+      background: rgba(0, 255, 178, 0.05);
+    }
+
+    .signup-link {
+      text-align: center;
+      font-family: var(--fm);
+      font-size: 11px;
+      color: var(--t2);
+    }
+
+    .signup-link a {
+      color: var(--a1);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .signup-link a:hover {
+      color: var(--a2);
+    }
+
+    .error-msg {
+      color: var(--a3);
+      font-family: var(--fm);
+      font-size: 11px;
+      margin-top: 8px;
+      display: none;
+      animation: shake 0.4s ease-in-out;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    .success-msg {
+      color: var(--a1);
+      font-family: var(--fm);
+      font-size: 11px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .success-msg.show {
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 30px 20px;
+      }
+
+      .logo-name {
+        font-size: 18px;
+      }
+
+      .login-btn {
+        padding: 12px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <!-- Logo Section -->
+  <div class="logo-section">
+    <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="14" r="13" stroke="url(#g1)" stroke-width="1.5"/>
+      <rect x="11" y="5" width="6" height="11" rx="3" fill="url(#g1)"/>
+      <path d="M7 13a7 7 0 0014 0" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="14" y1="20" x2="14" y2="23" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="11" y1="23" x2="17" y2="23" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="28" y2="28">
+          <stop stop-color="#00FFB2"/><stop offset="1" stop-color="#0099FF"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="logo-text">
+      <div class="logo-name">AI ASSISTANT</div>
+      <div class="logo-tag">Voice Navigator</div>
+    </div>
+  </div>
+
+  <!-- Login Form -->
+  <form id="loginForm">
+    <!-- Email Input -->
+    <div class="form-group">
+      <label class="form-label" for="email">📧 Email or Mobile</label>
+      <input 
+        class="form-input" 
+        id="email" 
+        type="text" 
+        placeholder="Enter your email or phone" 
+        required
+      />
+      <div class="error-msg" id="emailError"></div>
+    </div>
+
+    <!-- Password Input -->
+    <div class="form-group">
+      <label class="form-label" for="password">🔒 Password</label>
+      <div class="password-toggle">
+        <input 
+          class="form-input" 
+          id="password" 
+          type="password" 
+          placeholder="Enter your password" 
+          required
+        />
+        <button 
+          type="button" 
+          class="toggle-btn" 
+          id="togglePassword" 
+          title="Toggle password visibility"
+        >
+          👁
+        </button>
+      </div>
+      <div class="error-msg" id="passwordError"></div>
+    </div>
+
+    <!-- Remember Me & Forgot Password -->
+    <div class="checkbox-group">
+      <input 
+        class="checkbox" 
+        id="rememberMe" 
+        type="checkbox"
+      />
+      <label class="checkbox-label" for="rememberMe">Remember me</label>
+    </div>
+
+    <!-- Login Button -->
+    <button type="submit" class="login-btn" id="loginBtn">
+      🚀 SIGN IN WITH VOICE
+    </button>
+
+    <div class="success-msg" id="successMsg">✅ Login successful!</div>
+  </form>
+
+  <!-- Divider -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-text">OR</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Social Login -->
+  <div class="social-btns">
+    <button class="social-btn" id="googleBtn">🔵 Google</button>
+    <button class="social-btn" id="githubBtn">⚫ GitHub</button>
+  </div>
+
+  <!-- Sign Up Link -->
+  <div class="signup-link">
+    Don't have an account? <a href="#signup">Create one</a>
+  </div>
+</div>
+
+<script>
+  const loginForm = document.getElementById('loginForm');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const togglePasswordBtn = document.getElementById('togglePassword');
+  const loginBtn = document.getElementById('loginBtn');
+  const rememberMeCheckbox = document.getElementById('rememberMe');
+  const successMsg = document.getElementById('successMsg');
+  const emailError = document.getElementById('emailError');
+  const passwordError = document.getElementById('passwordError');
+
+  // Password visibility toggle
+  togglePasswordBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const type = passwordInput.type === 'password' ? 'text' : 'password';
+    passwordInput.type = type;
+    togglePasswordBtn.textContent = type === 'password' ? '👁' : '👁‍🗨';
+  });
+
+  // Form submission
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Clear previous errors
+    emailError.classList.remove('show');
+    passwordError.classList.remove('show');
+    successMsg.classList.remove('show');
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    // Validation
+    if (!email) {
+      emailError.textContent = '📧 Please enter email or mobile number';
+      emailError.classList.add('show');
+      emailInput.focus();
+      return;
+    }
+
+    if (!password) {
+      passwordError.textContent = '🔒 Please enter your password';
+      passwordError.classList.add('show');
+      passwordInput.focus();
+      return;
+    }
+
+    // Email/Mobile validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const mobileRegex = /^[0-9]{10}$/;
+
+    if (!emailRegex.test(email) && !mobileRegex.test(email)) {
+      emailError.textContent = '❌ Please enter a valid email or 10-digit mobile number';
+      emailError.classList.add('show');
+      return;
+    }
+
+    // Password validation (minimum 6 characters)
+    if (password.length < 6) {
+      passwordError.textContent = '🔒 Password must be at least 6 characters';
+      passwordError.classList.add('show');
+      return;
+    }
+
+    // Simulate login (in production, send to backend)
+    loginBtn.classList.add('loading');
+    loginBtn.textContent = '⏳ Signing in…';
+
+    setTimeout(() => {
+      // Store login state
+      if (rememberMeCheckbox.checked) {
+        localStorage.setItem('aiAssistant_rememberMe', email);
+      }
+
+      // Show success
+      successMsg.classList.add('show');
+      loginBtn.textContent = '✅ SIGNED IN';
+
+      // Simulate redirect after 1.5s
+      setTimeout(() => {
+        alert('🎉 Welcome! Redirecting to dashboard...');
+        // In production: window.location.href = '/dashboard';
+      }, 1500);
+    }, 1200);
+  });
+
+  // Social login handlers
+  document.getElementById('googleBtn').addEventListener('click', () => {
+    alert('🔵 Google OAuth integration coming soon!');
+  });
+
+  document.getElementById('githubBtn').addEventListener('click', () => {
+    alert('⚫ GitHub OAuth integration coming soon!');
+  });
+
+  // Load saved email if "Remember me" was checked
+  window.addEventListener('load', () => {
+    const saved = localStorage.getItem('aiAssistant_rememberMe');
+    if (saved) {
+      emailInput.value = saved;
+      rememberMeCheckbox.checked = true;
+      passwordInput.focus();
+    }
+  });
+</script>
+
+</body>
+</html>
