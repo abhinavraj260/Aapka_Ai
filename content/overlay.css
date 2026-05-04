@@ -1,0 +1,4 @@
+/* AI ASSISTANT overlay — toast only, injected into pages */
+#ai-assistant-toast {
+  opacity: 0;
+}

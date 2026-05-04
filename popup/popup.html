@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>AI ASSISTANT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css"/>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Header -->
+  <header class="hdr">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="13" stroke="url(#g1)" stroke-width="1.5"/>
+        <rect x="11" y="5" width="6" height="11" rx="3" fill="url(#g1)"/>
+        <path d="M7 13a7 7 0 0014 0" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="14" y1="20" x2="14" y2="23" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="11" y1="23" x2="17" y2="23" stroke="url(#g1)" stroke-width="1.6" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="28" y2="28">
+            <stop stop-color="#00FFB2"/><stop offset="1" stop-color="#0099FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div>
+        <div class="brand-name">AI ASSISTANT</div>
+        <div class="brand-tag">Voice Navigator</div>
+      </div>
+    </div>
+    <div class="pill" id="pill"><span class="pdot" id="pdot"></span><span id="ptext">Ready</span></div>
+  </header>
+
+  <!-- Mic Zone -->
+  <div class="mic-zone" id="micZone">
+    <div class="ripple-wrap">
+      <div class="rip r1"></div><div class="rip r2"></div><div class="rip r3"></div>
+    </div>
+    <button class="mic-btn" id="micBtn">
+      <svg id="icoMic" viewBox="0 0 24 24" fill="none">
+        <rect x="9" y="2" width="6" height="12" rx="3" fill="currentColor"/>
+        <path d="M5 10a7 7 0 0014 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <line x1="9" y1="21" x2="15" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <svg id="icoStop" class="gone" viewBox="0 0 24 24" fill="none">
+        <rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor"/>
+      </svg>
+    </button>
+    <div class="bars" id="bars">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="mic-hint" id="micHint">Click to start listening</div>
+  </div>
+
+  <!-- Transcript -->
+  <div class="section">
+    <div class="sec-lbl">TRANSCRIPT</div>
+    <div class="tx-box" id="txBox">
+      <span class="ghost">Say a command…</span>
+    </div>
+  </div>
+
+  <!-- Action Feedback -->
+  <div class="section">
+    <div class="sec-lbl">ACTION</div>
+    <div class="act-box" id="actBox">Waiting for voice input…</div>
+  </div>
+
+  <!-- Quick Nav Buttons -->
+  <div class="section">
+    <div class="sec-lbl">QUICK NAVIGATE</div>
+    <div class="quick-grid">
+      <button class="qb" data-cmd="enter email test@email.com">Enter Email</button>
+      <button class="qb" data-cmd="enter mobile 9876543210">Enter Mobile</button>
+      <button class="qb" data-cmd="click continue">Continue</button>
+      <button class="qb" data-cmd="go to amazon">Amazon</button>
+      <button class="qb" data-cmd="scroll down">Scroll ↓</button>
+      <button class="qb" data-cmd="go back">← Back</button>
+    </div>
+  </div>
+
+  <!-- Command Reference -->
+  <div class="section">
+    <div class="sec-lbl">LOGIN COMMANDS</div>
+    <div class="cmd-list">
+      <div class="cmd-row"><span class="cmd-ex">"Enter email test@example.com"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Enter mobile 9876543210"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Enter password mypassword"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Click continue"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Click login"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Focus email"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Clear password"</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-lbl">E-COMMERCE COMMANDS</div>
+    <div class="cmd-list">
+      <div class="cmd-row"><span class="cmd-ex">"Search for red shoes"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Add to cart"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Go to checkout"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Filter by price"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Scroll down / up"</span></div>
+      <div class="cmd-row"><span class="cmd-ex">"Go back"</span></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="ftr">
+    <span class="ftr-tag">No backend · 100% browser</span>
+    <button class="ftr-clr" id="clrBtn">Clear</button>
+  </footer>
+
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
