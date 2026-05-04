@@ -38,8 +38,17 @@
     "48":  "icons/icon48.png",
     "128": "icons/icon128.png"
   },
- "web_accessible_resources": [{
-  "resources": ["content/overlay.css", "login/login.html"],
-  "matches": ["<all_urls>"]
-}]
+  "commands": {
+    "open-login": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Open AI Assistant Login Page"
+    }
+  },
+  "web_accessible_resources": [{
+    "resources": ["content/overlay.css", "login/login.html"],
+    "matches": ["<all_urls>"]
+  }]
 }
