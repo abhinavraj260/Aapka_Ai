@@ -323,6 +323,10 @@
       }
     }
   </style>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
 </head>
 <body>
 
@@ -422,110 +426,10 @@
   </div>
 </div>
 
-<script>
-  const loginForm = document.getElementById('loginForm');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
-  const togglePasswordBtn = document.getElementById('togglePassword');
-  const loginBtn = document.getElementById('loginBtn');
-  const rememberMeCheckbox = document.getElementById('rememberMe');
-  const successMsg = document.getElementById('successMsg');
-  const emailError = document.getElementById('emailError');
-  const passwordError = document.getElementById('passwordError');
 
-  // Password visibility toggle
-  togglePasswordBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const type = passwordInput.type === 'password' ? 'text' : 'password';
-    passwordInput.type = type;
-    togglePasswordBtn.textContent = type === 'password' ? '👁' : '👁‍🗨';
-  });
 
-  // Form submission
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
 
-    // Clear previous errors
-    emailError.classList.remove('show');
-    passwordError.classList.remove('show');
-    successMsg.classList.remove('show');
-
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    // Validation
-    if (!email) {
-      emailError.textContent = '📧 Please enter email or mobile number';
-      emailError.classList.add('show');
-      emailInput.focus();
-      return;
-    }
-
-    if (!password) {
-      passwordError.textContent = '🔒 Please enter your password';
-      passwordError.classList.add('show');
-      passwordInput.focus();
-      return;
-    }
-
-    // Email/Mobile validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mobileRegex = /^[0-9]{10}$/;
-
-    if (!emailRegex.test(email) && !mobileRegex.test(email)) {
-      emailError.textContent = '❌ Please enter a valid email or 10-digit mobile number';
-      emailError.classList.add('show');
-      return;
-    }
-
-    // Password validation (minimum 6 characters)
-    if (password.length < 6) {
-      passwordError.textContent = '🔒 Password must be at least 6 characters';
-      passwordError.classList.add('show');
-      return;
-    }
-
-    // Simulate login (in production, send to backend)
-    loginBtn.classList.add('loading');
-    loginBtn.textContent = '⏳ Signing in…';
-
-    setTimeout(() => {
-      // Store login state
-      if (rememberMeCheckbox.checked) {
-        localStorage.setItem('aiAssistant_rememberMe', email);
-      }
-
-      // Show success
-      successMsg.classList.add('show');
-      loginBtn.textContent = '✅ SIGNED IN';
-
-      // Simulate redirect after 1.5s
-      setTimeout(() => {
-        alert('🎉 Welcome! Redirecting to dashboard...');
-        // In production: window.location.href = '/dashboard';
-      }, 1500);
-    }, 1200);
-  });
-
-  // Social login handlers
-  document.getElementById('googleBtn').addEventListener('click', () => {
-    alert('🔵 Google OAuth integration coming soon!');
-  });
-
-  document.getElementById('githubBtn').addEventListener('click', () => {
-    alert('⚫ GitHub OAuth integration coming soon!');
-  });
-
-  // Load saved email if "Remember me" was checked
-  window.addEventListener('load', () => {
-    const saved = localStorage.getItem('aiAssistant_rememberMe');
-    if (saved) {
-      emailInput.value = saved;
-      rememberMeCheckbox.checked = true;
-      passwordInput.focus();
-    }
-  });
-</script>
+<script src="login.js"></script>
 
 </body>
 </html>

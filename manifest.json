@@ -48,7 +48,13 @@
     }
   },
   "web_accessible_resources": [{
-    "resources": ["content/overlay.css", "login/login.html"],
-    "matches": ["<all_urls>"]
-  }]
+  "resources": [
+    "content/overlay.css",
+    "login/login.html",
+    "login/login.js"
+  ],
+  "matches": ["<all_urls>"]
+}]
 }
+
+
